@@ -1,15 +1,19 @@
 /* 
-@version 1.0
+@version 4.0
 @autor Kinshuk
  */
 public class HelloWorld{
  public static void main(String args[]){
-     System.out.println("   ***   " + "  " + "   ***  " + "  " + " ****** " + "  " + "   *****");
-     System.out.println(" **   **" + "  " + "  **   **" + "  " + " **   **" + "  " + " **");
-     System.out.println("**     **" + "  " + "**     **" + "  " + "**   **" + "  "+ "**");
-     System.out.println("**     **" + "  " + "**     **" + "  " + "****** " + "  " + "  *****");
-     System.out.println("**     **" + "  " +  "**     **" + "  " + "**    " + "  " + "      **");
-     System.out.println(" **   **" + "  " + "  **   **" + "  " + " **    " + "  " + " **   **");
-     System.out.println("   ***   " + "  " + "   ***   " + "  " + "**    " + "  " + "  *****    ");
+    String[] lines = new String[7];
+     lines[0] =  ("   ***   " + "  " + "   ***  " + "  " + " ****** " + "  " + "   *****");
+     lines[1] = (" **   **" + "  " + "  **   **" + "  " + " **   **" + "  " + " **");
+     lines[2] = ("**     **" + "  " + "**     **" + "  " + "**   **" + "  "+ "**");
+     lines[3] = ("**     **" + "  " + "**     **" + "  " + "****** " + "  " + "  *****");
+     lines[4] = ("**     **" + "  " +  "**     **" + "  " + "**    " + "  " + "      **");
+     lines[5] = (" **   **" + "  " + "  **   **" + "  " + " **    " + "  " + " **   **");
+     lines[6] = ("   ***   " + "  " + "   ***   " + "  " + "**    " + "  " + "  *****    ");
+     for (String line : lines){
+        System.out.println(line);
+     }
     }
 }
