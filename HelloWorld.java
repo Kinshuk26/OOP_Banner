@@ -1,76 +1,19 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class HelloWorld {
 
-    static class CharacterPatternMap {
-        char character;
-        String[] pattern;
+    // Rendering function
+    public static void renderWord(String word, Map<Character, String[]> patternMap) {
 
-        CharacterPatternMap(char character, String[] pattern) {
-            this.character = character;
-            this.pattern = pattern;
-        }
-    }
+        for (int row = 0; row < 7; row++) {
 
-    public static CharacterPatternMap[] createCharacterPatternMaps() {
+            for (char ch : word.toCharArray()) {
 
-        return new CharacterPatternMap[]{
-
-            new CharacterPatternMap('O', new String[]{
-                    "    ***   ",
-                    "  **   ** ",
-                    " **     **",
-                    " **     **",
-                    " **     **",
-                    "  **   ** ",
-                    "    ***   "
-            }),
-
-            new CharacterPatternMap('P', new String[]{
-                    " ****** ",
-                    " **   **",
-                    " **   **",
-                    " ****** ",
-                    " **     ",
-                    " **     ",
-                    " **     "
-            }),
-
-            new CharacterPatternMap('S', new String[]{
-                    "    *****  ",
-                    "  **       ",
-                    " ***       ",
-                    "   *****   ",
-                    "        ** ",
-                    " **     ** ",
-                    "   *****   "
-            })
-        };
-    }
-
-    public static String[] getCharacterPattern(char ch, CharacterPatternMap[] charMaps) {
-
-        for (CharacterPatternMap map : charMaps) {
-            if (map.character == ch) {
-                return map.pattern;
-            }
-        }
-
-        return null;
-    }
-
-    public static void printMessage(String message, CharacterPatternMap[] charMaps) {
-
-        message = message.toUpperCase();
-
-        int height = 7; // all patterns have 7 rows
-
-        for (int row = 0; row < height; row++) {
-
-            for (int i = 0; i < message.length(); i++) {
-
-                String[] pattern = getCharacterPattern(message.charAt(i), charMaps);
+                String[] pattern = patternMap.get(ch);
 
                 if (pattern != null) {
-                    System.out.print(pattern[row] + "  ");
+                    System.out.print(pattern[row] + "   ");
                 }
             }
 
@@ -80,10 +23,39 @@ public class HelloWorld {
 
     public static void main(String[] args) {
 
-        CharacterPatternMap[] charMaps = createCharacterPatternMaps();
+        Map<Character, String[]> patternMap = new HashMap<>();
 
-        String message = "OOPS";
+        patternMap.put('O', new String[]{
+            "  ***  ",
+            " **  ** ",
+            "**    **",
+            "**    **",
+            "**    **",
+            " **  ** ",
+            "  ***  "
+        });
 
-        printMessage(message, charMaps);
+        patternMap.put('P', new String[]{
+            "  ****  ",
+            "**   **",
+            "**   **",
+            "****   ",
+            "**     ",
+            "**     ",
+            "  **     "
+        });
+
+        patternMap.put('S', new String[]{
+            " **** ",
+            "**    ",
+            "**    ",
+            " ***  ",
+            "    **",
+            "    **",
+            " **** "
+        });
+
+        // Render any word
+        renderWord("OOPS", patternMap);
     }
 }
